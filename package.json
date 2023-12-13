@@ -10,10 +10,15 @@
   },
   "dependencies": {
     "axios": "^1.6.2",
-    "vue": "^3.3.10"
+    "vue": "^3.3.10",
+    "vue-router": "^4.2.5"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.1",
+    "autoprefixer": "^10.4.16",
+    "postcss": "^8.4.31",
+    "sass": "^1.65.1",
+    "tailwindcss": "^3.3.5",
     "vite": "^4.4.6"
   }
 }
