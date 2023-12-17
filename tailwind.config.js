@@ -11,6 +11,10 @@ module.exports = {
       lg: '1024px',
       xl: '1410px',
     },
+		container: {
+			center: true,
+			padding: '1rem'
+		},
     extend: {
 		},
   },
