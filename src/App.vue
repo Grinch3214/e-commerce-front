@@ -5,7 +5,7 @@
 
 <template>
 	<HeaderComponent />
-	<main>
+	<main class="flex-1">
 		<router-view />
 	</main>
 	<FooterComponent />
