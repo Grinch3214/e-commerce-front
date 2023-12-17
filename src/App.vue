@@ -1,13 +1,12 @@
 <script setup>
-	
+	import HeaderComponent from './views/HeaderView.vue'
+	import FooterComponent from './views/FooterView.vue'
 </script>
 
 <template>
-  <header>
-    Header 123
-  </header>
-
-  <main>
-    Main
-  </main>
+	<HeaderComponent />
+	<main class="flex-1">
+		<router-view />
+	</main>
+	<FooterComponent />
 </template>
