@@ -1,3 +1,3 @@
 <template>
-	<div>Catalog</div>
+	<div>Catalog (btn View details) (btn Add to Cart)</div>
 </template>
