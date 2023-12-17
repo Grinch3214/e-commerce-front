@@ -4,7 +4,7 @@
 </script>
 
 <template>
-	<HeaderComponent class="bg-gray-900" />
+	<HeaderComponent />
 	<main>
 		<router-view />
 	</main>
