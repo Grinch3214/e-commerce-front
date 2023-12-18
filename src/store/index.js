@@ -7,6 +7,7 @@ export const useProductsStore = defineStore('productsStore', () => {
 
 	const products = ref([])
 	const listProduct = computed(() => products.value)
+	const loadProducts = computed(() => products.value.length > 0)
 
 	const fetchProducts = async() => {
 		await axios.get(`${BASE_API}`)
@@ -17,6 +18,7 @@ export const useProductsStore = defineStore('productsStore', () => {
 
 	return {
 		fetchProducts,
-		listProduct
+		listProduct,
+		loadProducts
 	}
 })

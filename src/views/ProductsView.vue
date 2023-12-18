@@ -1,5 +1,8 @@
 <template>
-	<div>
+	<div v-if="!products.loadProducts">
+		Download product information
+	</div>
+	<div v-else>
 		<ProductCardVue v-for="item in list" :key="item.id" :product="item" />
 	</div>
 </template>
