@@ -1,12 +1,12 @@
 <template>
-	<article>
-			<div class="h-40">
+	<article class="flex flex-col">
+			<div class="h-40 mx-auto mb-3">
 				<img class="w-auto h-full object-cover" :src="product.image" alt="" width="200" height="200">
 			</div>
 			<h3>{{ product.title }}</h3>
 			<p>{{ product.category }}</p>
 			<p>{{ product.price }}</p>
-			<div class="flex gap-4">
+			<div class="flex gap-4 mt-auto">
 				<button class="px-7 py-4 bg-gray-900 text-white hover:bg-gray-800 transition-colors">View product</button>
 				<button class="px-7 py-4 text-gray-900 border-2 transition-colors border-gray-900 hover:bg-slate-100">Add to Cart</button>
 			</div>
