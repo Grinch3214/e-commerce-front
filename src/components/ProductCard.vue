@@ -1,5 +1,5 @@
 <template>
-	<article class="flex flex-col border border-gray-800 rounded-lg p-6 gap-2 group">
+	<article class="w-full max-w-sm md:max-w-none flex flex-col border border-gray-800 rounded-lg p-6 gap-2 group">
 			<div class="h-40 mx-auto mb-3 overflow-hidden">
 				<img class="group-hover:scale-105 w-auto h-full object-cover transition-all" :src="product.image" alt="" width="200" height="200">
 			</div>
@@ -9,9 +9,9 @@
 				<p class="text-sm">Price:</p>
 				<p class="">${{ product.price }}</p>
 			</div>
-			<div class="flex gap-4">
-				<button class="rounded-lg px-4 py-2 bg-gray-900 text-white hover:bg-gray-800 transition-colors w-3/6">View product</button>
-				<button class="rounded-lg px-4 py-2 text-gray-900 border-2 transition-colors border-gray-900 hover:bg-slate-100 w-3/6">Add to Cart</button>
+			<div class="flex flex-col lg:flex-row gap-4">
+				<button class="rounded-lg px-4 py-2 bg-gray-900 text-white hover:bg-gray-800 transition-colors w-full lg:w-3/6">View product</button>
+				<button class="rounded-lg px-4 py-2 text-gray-900 border-2 transition-colors border-gray-900 hover:bg-slate-100 w-full lg:w-3/6">Add to Cart</button>
 			</div>
 		</article>
 </template>
