@@ -2,7 +2,7 @@
 	<div v-if="!products.loadProducts">
 		Download product information
 	</div>
-	<div v-else class="grid grid-cols-3 container gap-4 py-10">
+	<div v-else class="grid grid-cols-4 container gap-4 py-10">
 		<ProductCard v-for="item in list" :key="item.id" :product="item" />
 	</div>
 </template>
