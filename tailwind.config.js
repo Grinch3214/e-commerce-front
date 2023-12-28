@@ -10,6 +10,7 @@ module.exports = {
       md: '768px',
       lg: '1024px',
       xl: '1410px',
+			xxl: '1632px'
     },
 		container: {
 			center: true,
