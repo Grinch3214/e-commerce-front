@@ -1,7 +1,7 @@
 <template>
 	<div class="container px-4 py-5">
 		<div>
-			<img :src="product.image" alt="product" width="500" height="300">
+			<img :src="product.image" alt="product" width="500" height="300" rel="preload" as="image">
 		</div>
 		<h2>{{ product.title }}</h2>
 		<p>{{ product.description }}</p>
