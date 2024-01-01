@@ -1,16 +1,13 @@
 <template>
-	<div>
-		{{ product }}
-	</div>
 	<div class="container px-4 py-5">
 		<div>
-			<img src="" alt="product" width="500" height="300">
+			<img :src="product.image" alt="product" width="500" height="300">
 		</div>
-		<h2>Title</h2>
-		<p>Desc</p>
+		<h2>{{ product.title }}</h2>
+		<p>{{ product.description }}</p>
 		<div>
-			<p>rating.rate</p>
-			<p>category</p>
+			<p>{{ product.rating ? product.rating.rate : 'N/A' }}</p>
+			<p>{{ product.category }}</p>
 		</div>
 		<div>
 			<button>-</button>
@@ -26,14 +23,14 @@
 	import { onMounted, computed } from 'vue'
 	import { useProductsStore } from '../store/index'
 
+	const route = useRoute()
+
 	const products = useProductsStore()
 	onMounted(() => products.fetchProductId(route.params.id))
 
 	const product = computed(() => products.productItem)
-
-	const route = useRoute()
-	console.log(route.params.id)
-
-
+	// setTimeout(() => {
+	// 	console.log(product.value)
+	// }, 1000)
 
 </script>

@@ -21,9 +21,8 @@ export const useProductsStore = defineStore('productsStore', () => {
 	const fetchProductId = async(id) => {
 		await axios.get(`${BASE_API}/${id}`)
 			.then((response) => {
-				console.log(response.data)
 				productId.value = response.data
-			})
+			}).catch(err => console.log(err))
 	}
 
 	return {
