@@ -1,4 +1,7 @@
 <template>
+	<div>
+		{{ product }}
+	</div>
 	<div class="container px-4 py-5">
 		<div>
 			<img src="" alt="product" width="500" height="300">
@@ -20,8 +23,17 @@
 
 <script setup>
 	import { useRoute } from 'vue-router'
+	import { onMounted, computed } from 'vue'
+	import { useProductsStore } from '../store/index'
+
+	const products = useProductsStore()
+	onMounted(() => products.fetchProductId(route.params.id))
+
+	const product = computed(() => products.productItem)
 
 	const route = useRoute()
 	console.log(route.params.id)
+
+
 
 </script>

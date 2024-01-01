@@ -8,6 +8,8 @@ export const useProductsStore = defineStore('productsStore', () => {
 	const products = ref([])
 	const listProduct = computed(() => products.value)
 	const loadProducts = computed(() => products.value.length > 0)
+	const productId = ref({})
+	const productItem = computed(() => productId.value)
 
 	const fetchProducts = async() => {
 		await axios.get(`${BASE_API}`)
@@ -16,9 +18,19 @@ export const useProductsStore = defineStore('productsStore', () => {
 			}).catch(err => console.log(err))
 	}
 
+	const fetchProductId = async(id) => {
+		await axios.get(`${BASE_API}/${id}`)
+			.then((response) => {
+				console.log(response.data)
+				productId.value = response.data
+			})
+	}
+
 	return {
 		fetchProducts,
 		listProduct,
-		loadProducts
+		loadProducts,
+		fetchProductId,
+		productItem
 	}
 })
