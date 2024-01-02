@@ -11,11 +11,20 @@ export const useProductsStore = defineStore('productsStore', () => {
 	const productId = ref({})
 	const productItem = computed(() => productId.value)
 
+	// const fetchProducts = async() => {
+	// 	await axios.get(`${BASE_API}`)
+	// 		.then((response) => {
+	// 			products.value = response.data
+	// 		}).catch(err => console.log(err))
+	// }
+
 	const fetchProducts = async() => {
-		await axios.get(`${BASE_API}`)
+		await setTimeout(() => {
+			axios.get(`${BASE_API}`)
 			.then((response) => {
 				products.value = response.data
 			}).catch(err => console.log(err))
+		}, 5000)
 	}
 
 	const fetchProductId = async(id) => {
