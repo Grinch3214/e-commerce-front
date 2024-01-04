@@ -1,5 +1,14 @@
 <template>
-	<section class="container px-4 py-10">
+	<section
+		v-if="!products.loadingPage"
+		class="flex justify-center items-center min-height-calc lg:text-4xl font-bold"
+	>
+		Loading...
+	</section>
+	<section
+		v-else
+		class="container px-4 py-10"
+	>
 		<div class="lg:flex gap-5">
 			<div class="h-[300px] max-w-[400px] w-full flex-shrink-0 flex justify-center mx-auto mb-5 lg:m-0">
 				<img
@@ -51,3 +60,9 @@
 	})
 
 </script>
+
+<style scoped>
+.min-height-calc {
+	height: calc(100vh - 91px);
+}
+</style>
