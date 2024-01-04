@@ -16,7 +16,7 @@
 				<h2 class="font-bold text-3xl mb-5 text-center lg:text-left">{{ product.title }}</h2>
 				<p class="mb-3 text-justify">{{ product.description }}</p>
 				<div class="flex gap-7 items-center mb-2">
-					<p>{{ product.rating ? product.rating.rate : 'N/A' }}</p>
+					<RatingStar :rating="ratingStar" />
 					<p class="text-xs py-1 px-4 bg-sky-950 self-start text-white rounded-lg">{{ product.category }}</p>
 				</div>
 				<p class="font-bold mb-10">${{ product.price }}</p>
@@ -34,6 +34,7 @@
 </template>
 
 <script setup>
+	import RatingStar from './RatingStar.vue'
 	import { useRoute } from 'vue-router'
 	import { onMounted, computed } from 'vue'
 	import { useProductsStore } from '../store/index'
@@ -44,5 +45,9 @@
 	onMounted(() => products.fetchProductId(route.params.id))
 
 	const product = computed(() => products.productItem)
+
+	const ratingStar = computed(() => {
+		return product.value.rating ? product.value.rating.rate : 'N/A'
+	})
 
 </script>
