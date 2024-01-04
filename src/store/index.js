@@ -11,6 +11,8 @@ export const useProductsStore = defineStore('productsStore', () => {
 	const productId = ref({})
 	const productItem = computed(() => productId.value)
 
+	const loadingPage = ref(false)
+
 	const fetchProducts = async() => {
 		await axios.get(`${BASE_API}`)
 			.then((response) => {
@@ -22,6 +24,7 @@ export const useProductsStore = defineStore('productsStore', () => {
 		await axios.get(`${BASE_API}/${id}`)
 			.then((response) => {
 				productId.value = response.data
+				loadingPage.value = true
 			}).catch(err => console.log(err))
 	}
 
@@ -30,6 +33,7 @@ export const useProductsStore = defineStore('productsStore', () => {
 		listProduct,
 		loadProducts,
 		fetchProductId,
-		productItem
+		productItem,
+		loadingPage
 	}
 })
