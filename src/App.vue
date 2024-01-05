@@ -5,7 +5,10 @@
 	import { useShopStore } from './store/index'
 
 	const products = useShopStore()
-	onMounted(() => products.productStore.fetchProducts())
+	onMounted(() => {
+		products.productStore.fetchProducts()
+		products.cartStore.loadFromLocalStorage()
+	})
 </script>
 
 <template>
