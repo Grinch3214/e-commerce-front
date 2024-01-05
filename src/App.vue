@@ -2,10 +2,10 @@
 	import HeaderComponent from './views/HeaderView.vue'
 	import FooterComponent from './views/FooterView.vue'
 	import { onMounted } from 'vue'
-	import { useProductsStore } from './store/index'
+	import { useShopStore } from './store/index'
 
-	const products = useProductsStore()
-	onMounted(() => products.fetchProducts())
+	const products = useShopStore()
+	onMounted(() => products.productStore.fetchProducts())
 </script>
 
 <template>
