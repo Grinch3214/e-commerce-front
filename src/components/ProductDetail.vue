@@ -1,6 +1,6 @@
 <template>
 	<section
-		v-if="!products.loadingPage"
+		v-if="!products.productStore.loadingPage"
 		class="flex justify-center items-center min-height-calc lg:text-4xl font-bold"
 	>
 		Loading...
@@ -46,14 +46,14 @@
 	import RatingStar from './RatingStar.vue'
 	import { useRoute } from 'vue-router'
 	import { onMounted, computed } from 'vue'
-	import { useProductsStore } from '../store/index'
+	import { useShopStore } from '../store/index'
 
 	const route = useRoute()
 
-	const products = useProductsStore()
-	onMounted(() => products.fetchProductId(route.params.id))
+	const products = useShopStore()
+	onMounted(() => products.productStore.fetchProductId(route.params.id))
 
-	const product = computed(() => products.productItem)
+	const product = computed(() => products.productStore.productItem)
 
 	const ratingStar = computed(() => {
 		return product.value.rating ? product.value.rating.rate : 'N/A'
