@@ -29,10 +29,10 @@
 
 <script setup>
 	import { computed } from 'vue' 
-	import { useShopStore } from '../store/index'
-	const shopStore = useShopStore()
+	import { useCartStore } from '../store/cart'
+	const cartStore = useCartStore()
 
-	const carts = computed(() => shopStore.cartStore.cartPrewiews())
+	const carts = computed(() => cartStore.cartPrewiews())
 </script>
 
 <style lang="scss" scoped>

@@ -12,7 +12,7 @@
 			<div class="flex flex-col lg:flex-row gap-4 text-center">
 				<router-link :to="`/product/${product.id}`" class="rounded-lg px-4 py-2 bg-gray-900 text-white hover:bg-gray-800 transition-colors w-full lg:w-3/6 border-2 border-gray-900">View product</router-link>
 				<button
-					@click="shopStore.cartStore.addCart(product.id, product.price)"
+					@click="cartStore.addCart(product.id, product.price)"
 					class="rounded-lg px-4 py-2 text-gray-900 border-2 transition-colors border-gray-900 hover:bg-slate-100 w-full lg:w-3/6"
 				>
 					Add to Cart
@@ -22,8 +22,8 @@
 </template>
 
 <script setup>
-	import { useShopStore } from '../store/index'
-	const shopStore = useShopStore()
+	import { useCartStore } from '../store/cart'
+	const cartStore = useCartStore()
 
 	const props = defineProps({
 		product: {

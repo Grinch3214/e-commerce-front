@@ -2,12 +2,14 @@
 	import HeaderComponent from './views/HeaderView.vue'
 	import FooterComponent from './views/FooterView.vue'
 	import { onMounted } from 'vue'
-	import { useShopStore } from './store/index'
+	import { useProductsStore } from './store/products'
+	import { useCartStore } from './store/cart'
 
-	const products = useShopStore()
+	const products = useProductsStore()
+	const cartStore = useCartStore()
 	onMounted(() => {
-		products.productStore.fetchProducts()
-		products.cartStore.loadFromLocalStorage()
+		products.fetchProducts()
+		cartStore.loadFromLocalStorage()
 	})
 </script>
 
