@@ -2,10 +2,13 @@ import { defineStore } from 'pinia'
 import { ref } from 'vue'
 import Swal from 'sweetalert2/dist/sweetalert2.js'
 import 'sweetalert2/src/sweetalert2.scss'
+import { useProductsStore } from './products'
 
 export const useCartStore = defineStore('cartStore', () => {
+	const productStore = useProductsStore()
 
 	const cart = ref([])
+
 	const addCart = (id, price, quantity = 1) => {
 		const data = {
 			id,
@@ -34,6 +37,21 @@ export const useCartStore = defineStore('cartStore', () => {
       cart.value = JSON.parse(storedCart)
     }
 	}
+	const cartPrewiews = () => {
+		const previews = cart.value.map((prd) => {
+			console.log(prd)
+			const foundProduct = productStore.products.find((e) => e.id === prd.id)
+
+			if (foundProduct) {
+					return {
+							productId: foundProduct,
+							quantity: prd.quantity
+					}
+			}
+			return null
+		})
+		return previews.filter((item) => item !== null)
+	}
 
 	const alertAddCart = () => {
 		Swal.fire({
@@ -56,6 +74,8 @@ export const useCartStore = defineStore('cartStore', () => {
 
 	return {
 		addCart,
-		loadFromLocalStorage
+		loadFromLocalStorage,
+		cart,
+		cartPrewiews
 	}
 })
