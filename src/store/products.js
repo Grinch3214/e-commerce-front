@@ -34,6 +34,7 @@ export const useProductsStore = defineStore('productsStore', () => {
 		loadProducts,
 		fetchProductId,
 		productItem,
-		loadingPage
+		loadingPage,
+		products
 	}
 })
