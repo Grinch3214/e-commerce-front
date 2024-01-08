@@ -14,10 +14,10 @@
 					<div class="max-w-[150px] w-full font-bold">${{ item.productId.price }}</div>
 					<div class="flex gap-2 max-w-[170px] w-full">
 						<button class="bg-gray-900 text-white w-10 h-7 rounded-lg">-</button>
-						<div class="border min-w-[28px] flex justify-center items-center h-7 rounded-lg px-2">1</div>
+						<div class="border min-w-[28px] flex justify-center items-center h-7 rounded-lg px-2">{{ item.quantity }}</div>
 						<button class="bg-gray-900 text-white w-10 h-7 rounded-lg">+</button>
 					</div>
-					<div class="max-w-[200px] w-full font-bold text-sm">$14552.99</div>
+					<div class="max-w-[200px] w-full font-bold text-sm">${{ item.totalProduct.toFixed(2) }}</div>
 					<div>
 						<button class="px-4 py-2 w-full sm:w-auto bg-red-500 rounded-md text-white hover:bg-red-600">Delete</button>
 					</div>
@@ -32,7 +32,7 @@
 	import { useCartStore } from '../store/cart'
 	const cartStore = useCartStore()
 
-	const carts = computed(() => cartStore.cartPrewiews())
+	const carts = computed(() => cartStore.cartPrewiews)
 </script>
 
 <style lang="scss" scoped>
