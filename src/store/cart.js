@@ -38,7 +38,7 @@ export const useCartStore = defineStore('cartStore', () => {
 	}
 	const cartPrewiews = computed(() => {
 		const productStore = useProductsStore()
-
+		
 		const previews = cart.value.map((prd, index) => {
 			const foundProduct = productStore.products.find((e) => e.id === prd.id)
 			console.log(foundProduct)
@@ -73,10 +73,28 @@ export const useCartStore = defineStore('cartStore', () => {
 		})
 	}
 
+	const incrementQuantity = (i) => {
+		console.log(i)
+		cart.value[i].quantity += 1
+		saveToLocalStorage()
+	}
+	const decrementQuantity = (i) => {
+		cart.value[i].quantity -= 1
+		saveToLocalStorage()
+	}
+
+	const removeCartItem = (i) => {
+		cart.value.splice(i, 1)
+		saveToLocalStorage()
+	}
+
 	return {
 		addCart,
 		loadFromLocalStorage,
 		cart,
-		cartPrewiews
+		cartPrewiews,
+		incrementQuantity,
+		decrementQuantity,
+		removeCartItem
 	}
 })
