@@ -79,6 +79,11 @@ export const useCartStore = defineStore('cartStore', () => {
 		saveToLocalStorage()
 	}
 	const decrementQuantity = (i) => {
+		if(cart.value[i].quantity === 1) {
+			cart.value[i].quantity = 1
+			saveToLocalStorage()
+			return
+		}
 		cart.value[i].quantity -= 1
 		saveToLocalStorage()
 	}
