@@ -2,7 +2,7 @@
 	<section class="container px-4 py-10">
 		<h2 class="font-bold text-sm">Your Cart (products)</h2>
 
-		<ul class="cart">
+		<ul class="cart mb-5">
 			<li v-for="(item, index) in carts" :key="index" class="lg:flex items-start gap-6 py-4 border-b-2 border-gray-500">
 				<div class="sm:flex items-center gap-4 w-full mb-4 sm:mb-0">
 					<div class="h-[150px] w-[200px] flex-shrink-0 p-2 border-2 border-gray-500 mb-3 sm:mb-0">
@@ -24,6 +24,9 @@
 				</div>
 			</li>
 		</ul>
+		<div class="text-right">
+			<button @click="cartStore.clearCart()" class="px-4 py-2 w-full sm:w-auto bg-gray-900 rounded-md text-white hover:bg-gray-800">Clear all products</button>
+		</div>
 	</section>
 </template>
 
