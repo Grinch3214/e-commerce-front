@@ -74,7 +74,6 @@ export const useCartStore = defineStore('cartStore', () => {
 	}
 
 	const incrementQuantity = (i) => {
-		console.log(i)
 		cart.value[i].quantity += 1
 		saveToLocalStorage()
 	}
@@ -93,6 +92,11 @@ export const useCartStore = defineStore('cartStore', () => {
 		saveToLocalStorage()
 	}
 
+	const clearCart = () => {
+		cart.value = []
+		saveToLocalStorage()
+	}
+
 	return {
 		addCart,
 		loadFromLocalStorage,
@@ -100,6 +104,7 @@ export const useCartStore = defineStore('cartStore', () => {
 		cartPrewiews,
 		incrementQuantity,
 		decrementQuantity,
-		removeCartItem
+		removeCartItem,
+		clearCart
 	}
 })
