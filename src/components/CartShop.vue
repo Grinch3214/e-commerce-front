@@ -1,5 +1,8 @@
 <template>
-	<section class="container px-4 py-10">
+	<section v-if="!cartStore.cart.length" class="container px-4 py-10 text-center font-bold text-2xl">
+		Your cart is empty, select the <router-link class="text-blue-700 underline" to="/">product</router-link>
+	</section>
+	<section v-else class="container px-4 py-10">
 		<h2 class="font-bold text-sm">Your Cart (products)</h2>
 
 		<ul class="cart mb-5">
