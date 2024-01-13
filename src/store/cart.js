@@ -8,14 +8,12 @@ export const useCartStore = defineStore('cartStore', () => {
 
 	const cart = ref([])
 
-	const addCart = (id, price, quantity = 1) => {
-		const data = {
-			id,
-			price,
-			quantity
+	const addCart = (product) => {
+		const data = { 
+			...product,
+			quantity: 1
 		}
 		const findId = cart.value.find(e => e.id === data.id)
-
 		if(findId) {
 			alertAddCartError()
 		} else {
@@ -38,7 +36,7 @@ export const useCartStore = defineStore('cartStore', () => {
 	}
 	const cartPrewiews = computed(() => {
 		const productStore = useProductsStore()
-		
+		console.log('PREVIEW', cart.value)
 		const previews = cart.value.map((prd, index) => {
 			const foundProduct = productStore.products.find((e) => e.id === prd.id)
 			console.log(foundProduct)
