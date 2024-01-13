@@ -21,7 +21,6 @@ export const useCartStore = defineStore('cartStore', () => {
 			saveToLocalStorage()
 			alertAddCart()
 		}
-		console.log(cart.value)
 	}
 
 	const saveToLocalStorage = () => {
@@ -34,12 +33,10 @@ export const useCartStore = defineStore('cartStore', () => {
       cart.value = JSON.parse(storedCart)
     }
 	}
-	const cartPrewiews = computed(() => {
+	const cartPreviews = computed(() => {
 		const productStore = useProductsStore()
-		console.log('PREVIEW', cart.value)
 		const previews = cart.value.map((prd, index) => {
 			const foundProduct = productStore.products.find((e) => e.id === prd.id)
-			console.log(foundProduct)
 			if (foundProduct) {
 					return {
 							productId: foundProduct,
@@ -99,7 +96,7 @@ export const useCartStore = defineStore('cartStore', () => {
 		addCart,
 		loadFromLocalStorage,
 		cart,
-		cartPrewiews,
+		cartPreviews,
 		incrementQuantity,
 		decrementQuantity,
 		removeCartItem,
