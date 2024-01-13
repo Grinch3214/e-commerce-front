@@ -34,23 +34,43 @@ export const useCartStore = defineStore('cartStore', () => {
       cart.value = JSON.parse(storedCart)
     }
 	}
-	const cartPrewiews = computed(() => {
+
+	const cartPreviews = computed(() => {
 		const productStore = useProductsStore()
 		console.log('PREVIEW', cart.value)
+		console.log(productStore.products)
+
 		const previews = cart.value.map((prd, index) => {
-			const foundProduct = productStore.products.find((e) => e.id === prd.id)
-			console.log(foundProduct)
-			if (foundProduct) {
-					return {
-							productId: foundProduct,
-							quantity: cart.value[index].quantity,
-							totalProduct: foundProduct.price * cart.value[index].quantity
-					}
+			// TODO: оставлю пока тут, надо подумать как лучше, с одной стороны 
+			// TODO: мы работаем так только с массивом кард, с другой стороны
+			// TODO: ф-ция ниже проверяет наличие продуктов на сервере и если их нет,
+			// TODO: то и в новый массив мы не запушим эти продукты
+			return {
+				productId: prd,
+				quantity: cart.value[index].quantity,
+				totalProduct: prd.price * cart.value[index].quantity
 			}
-			return null
 		})
-		return previews.filter((item) => item !== null)
+		return previews
 	})
+
+	// const cartPrewiews = computed(() => {
+	// 	const productStore = useProductsStore()
+	// 	console.log('PREVIEW', cart.value)
+	// 	const previews = cart.value.map((prd, index) => {
+	// 		const foundProduct = productStore.products.find((e) => e.id === prd.id)
+	// 		console.log(foundProduct)
+	// 		if (foundProduct) {
+	// 				return {
+	// 						productId: foundProduct,
+	// 						quantity: cart.value[index].quantity,
+	// 						totalProduct: foundProduct.price * cart.value[index].quantity
+	// 				}
+	// 		}
+	// 		return null
+	// 	})
+	// 	return previews.filter((item) => item !== null)
+	// })
 
 	const alertAddCart = () => {
 		Swal.fire({
@@ -99,7 +119,7 @@ export const useCartStore = defineStore('cartStore', () => {
 		addCart,
 		loadFromLocalStorage,
 		cart,
-		cartPrewiews,
+		cartPreviews,
 		incrementQuantity,
 		decrementQuantity,
 		removeCartItem,
