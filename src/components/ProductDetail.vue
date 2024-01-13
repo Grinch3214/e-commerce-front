@@ -31,11 +31,11 @@
 				<p class="font-bold mb-10">${{ product.price }}</p>
 				<div class="sm:flex justify-between items-center">
 					<div class="flex items-center gap-2 mb-5 sm:mb-0">
-						<button class="bg-gray-900 text-white w-10 h-7 rounded-lg">-</button>
-						<div class="border min-w-[28px] flex justify-center items-center rounded-lg px-2">0</div>
-						<button class="bg-gray-900 text-white w-10 h-7 rounded-lg">+</button>
+						<button @click="decrementQuantity()" :disabled="quantity === 1" class="bg-gray-900 text-white w-10 h-7 rounded-lg disabled:bg-gray-600">-</button>
+						<div class="border min-w-[28px] flex justify-center items-center rounded-lg px-2">{{quantity}}</div>
+						<button @click="incrementQuantity()" class="bg-gray-900 text-white w-10 h-7 rounded-lg disabled:bg-gray-600">+</button>
 					</div>
-					<button class="rounded-lg px-4 py-2 bg-gray-900 text-white hover:bg-gray-800 transition-colors border-2 border-gray-900 w-full sm:w-auto">Add to cart</button>
+					<button @click="cartStore.addCartDetail(product, quantity)" class="rounded-lg px-4 py-2 bg-gray-900 text-white hover:bg-gray-800 transition-colors border-2 border-gray-900 w-full sm:w-auto">Add to cart</button>
 				</div>
 			</div>
 		</div>
@@ -45,19 +45,34 @@
 <script setup>
 	import RatingStar from './RatingStar.vue'
 	import { useRoute } from 'vue-router'
-	import { onMounted, computed } from 'vue'
+	import { onMounted, computed, ref } from 'vue'
 	import { useProductsStore } from '../store/products'
+	import { useCartStore } from '../store/cart'
+
+	const quantity = ref(1)
 
 	const route = useRoute()
 
 	const products = useProductsStore()
 	onMounted(() => products.fetchProductId(route.params.id))
 
+	const cartStore = useCartStore()
+
 	const product = computed(() => products.productItem)
 
 	const ratingStar = computed(() => {
 		return product.value.rating ? product.value.rating.rate : 'N/A'
 	})
+
+	const incrementQuantity = () => {
+		quantity.value++
+	}
+	const decrementQuantity = () => {
+		if(quantity.value === 1) {
+			return quantity.value = 1
+		}
+		quantity.value--
+	}
 
 </script>
 
