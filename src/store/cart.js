@@ -23,6 +23,26 @@ export const useCartStore = defineStore('cartStore', () => {
 		}
 	}
 
+	const addCartDetail = (product, quantity) => {
+		const data = { 
+			...product,
+			quantity
+		}
+		const findId = cart.value.find(e => e.id === data.id)
+		console.log('findId: ',findId)
+		if(findId) {
+			const findIndexProduct = cart.value.findIndex(e => e.id === data.id)
+			cart.value[findIndexProduct].quantity = cart.value[findIndexProduct].quantity + quantity
+			saveToLocalStorage()
+			alertAddCart()
+		} else {
+			console.log('ELSE ')
+			cart.value.push(data)
+			saveToLocalStorage()
+			alertAddCart()
+		}
+	}
+
 	const saveToLocalStorage = () => {
 		const serializedCart = JSON.stringify(cart.value)
     localStorage.setItem('cartStore', serializedCart)
@@ -100,6 +120,7 @@ export const useCartStore = defineStore('cartStore', () => {
 		incrementQuantity,
 		decrementQuantity,
 		removeCartItem,
-		clearCart
+		clearCart,
+		addCartDetail
 	}
 })
