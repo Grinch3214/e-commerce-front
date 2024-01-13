@@ -38,7 +38,7 @@
 	import { useCartStore } from '../store/cart'
 	const cartStore = useCartStore()
 
-	const carts = computed(() => cartStore.cartPrewiews)
+	const carts = computed(() => cartStore.cartPreviews)
 </script>
 
 <style lang="scss" scoped>
