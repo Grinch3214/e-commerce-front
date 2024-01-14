@@ -22,12 +22,13 @@
 					</div>
 					<div class="max-w-[200px] w-full font-bold text-sm">${{ item.totalProduct.toFixed(2) }}</div>
 					<div>
-						<button @click="cartStore.removeCartItem(index)" class="px-4 py-2 w-full sm:w-auto bg-red-500 rounded-md text-white hover:bg-red-600">Delete</button>
+						<button @click="cartStore.removeCartItem(index)" class="px-4 py-2 w-full sm:w-auto bg-red-700 rounded-md text-white hover:bg-red-800">Delete</button>
 					</div>
 				</div>
 			</li>
 		</ul>
 		<div class="text-right">
+			<button  class="px-4 py-2 w-full sm:w-auto bg-green-700 rounded-md text-white hover:bg-green-800 sm:mr-4 mb-5 sm:mb-0">Total sum <span class="font-bold">${{ cartStore.total.toFixed(2) }}</span></button>
 			<button @click="cartStore.clearCart()" class="px-4 py-2 w-full sm:w-auto bg-gray-900 rounded-md text-white hover:bg-gray-800">Clear all products</button>
 		</div>
 	</section>

@@ -69,6 +69,12 @@ export const useCartStore = defineStore('cartStore', () => {
 		return previews.filter((item) => item !== null)
 	})
 
+	const total = computed(() => {
+		return cart.value.reduce((sum, prd) => {
+			return sum + prd.price * prd.quantity
+		}, 0)
+	})
+
 	const alertAddCart = () => {
 		Swal.fire({
 			position: "center",
@@ -121,6 +127,7 @@ export const useCartStore = defineStore('cartStore', () => {
 		decrementQuantity,
 		removeCartItem,
 		clearCart,
-		addCartDetail
+		addCartDetail,
+		total
 	}
 })
