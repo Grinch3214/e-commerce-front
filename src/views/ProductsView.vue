@@ -3,7 +3,7 @@
 		<ProductCardSkeleton v-for="(item, index) in 8" :key="index" />
 	</div>
 	<div v-else class="grid grid-cols-1 justify-items-center md:justify-items-stretch md:grid-cols-2 xl:grid-cols-3 xxl:grid-cols-4 container gap-4 py-10">
-		<ProductCard v-for="item in list" :key="item.id" :product="item" />
+		<ProductCard v-for="item in searchProduct" :key="item.id" :product="item" />
 	</div>
 </template>
 
@@ -15,4 +15,6 @@
 
 	const products = useProductsStore()
 	const list = computed(() => products.listProduct)
+
+	const searchProduct = computed(() => products.searchProduct)
 </script>
