@@ -13,6 +13,8 @@ export const useProductsStore = defineStore('productsStore', () => {
 
 	const loadingPage = ref(false)
 
+	const searchInput = ref('')
+
 	const fetchProducts = async() => {
 		await axios.get(`${BASE_API}`)
 			.then((response) => {
@@ -28,6 +30,19 @@ export const useProductsStore = defineStore('productsStore', () => {
 			}).catch(err => console.log(err))
 	}
 
+	const searchProduct = computed(() => {
+		if(searchInput.value.length < 3) {
+			return products.value
+		}
+		return products.value.filter((prd) => {
+			if(prd.title.toLowerCase().includes(searchInput.value.toLowerCase()) === false) {
+				return false
+			} else {
+				return prd.title.toLowerCase().includes(searchInput.value.toLowerCase())
+			}
+		})
+	})
+
 	return {
 		fetchProducts,
 		listProduct,
@@ -35,6 +50,8 @@ export const useProductsStore = defineStore('productsStore', () => {
 		fetchProductId,
 		productItem,
 		loadingPage,
-		products
+		products,
+		searchInput,
+		searchProduct
 	}
 })
