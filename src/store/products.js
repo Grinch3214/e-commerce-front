@@ -31,16 +31,13 @@ export const useProductsStore = defineStore('productsStore', () => {
 	}
 
 	const searchProduct = computed(() => {
-		if(searchInput.value.length < 3) {
+		const searchTerm = searchInput.value.toLowerCase()
+	
+		if (searchTerm.length < 3) {
 			return products.value
 		}
-		return products.value.filter((prd) => {
-			if(prd.title.toLowerCase().includes(searchInput.value.toLowerCase()) === false) {
-				return false
-			} else {
-				return prd.title.toLowerCase().includes(searchInput.value.toLowerCase())
-			}
-		})
+	
+		return products.value.filter(prd => prd.title.toLowerCase().includes(searchTerm))
 	})
 
 	return {
