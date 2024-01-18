@@ -30,15 +30,6 @@ export const useProductsStore = defineStore('productsStore', () => {
 			}).catch(err => console.log(err))
 	}
 
-	const searchTag = computed((category) => {
-
-		if (category === 'all') {
-			return products.value
-		}
-
-		return products.value.filter(prd => prd.category.includes(category))
-	})
-
 	const searchProduct = computed(() => {
 		const searchTerm = searchInput.value.toLowerCase()
 	
@@ -58,7 +49,6 @@ export const useProductsStore = defineStore('productsStore', () => {
 		loadingPage,
 		products,
 		searchInput,
-		searchProduct,
-		searchTag
+		searchProduct
 	}
 })
