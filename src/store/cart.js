@@ -79,18 +79,18 @@ export const useCartStore = defineStore('cartStore', () => {
 		Swal.fire({
 			position: "center",
 			icon: "success",
-			title: "Your work has been saved",
+			title: "Your product has been successfully added to cart",
 			showConfirmButton: false,
-			timer: 600
+			timer: 900
 		})
 	}
 	const alertAddCartError = () => {
 		Swal.fire({
 			position: "center",
 			icon: "error",
-			title: "Your work has been saved",
+			title: "This item is already in the cart",
 			showConfirmButton: false,
-			timer: 600
+			timer: 900
 		})
 	}
 
