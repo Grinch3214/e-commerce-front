@@ -11,7 +11,7 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
-    },
-		// base: '/e-commerce-front/',
-  }
+    }
+  },
+	// base: '/e-commerce-front/',
 })
